@@ -143,68 +143,55 @@
       </div>
 
       <div class="player" id="audio-player">
-        <button class="play-btn" id="playBtn">▶</button>
-        <div class="meta">
-          <strong id="songTitle">Nama Lagu (ganti ID Drive)</strong>
-          <small>Music hosted on Google Drive — pastikan file sudah dibagikan ke publik (Anyone with the link).</small>
-        </div>
-      </div>
-    </main>
+<a class="play-btn" id="driveLinkBtn" href="https://drive.google.com/drive/folders/FOLDER_ID" target="_blank" rel="noopener noreferrer">🎵</a>
+<div class="meta">
+<strong>Koleksi Lagu KPOP × DRAKOR</strong>
+<small>Klik tombol untuk buka folder Google Drive (banyak lagu).</small>
+</div>
+</div>
+</main>
 
-    <footer>
-      © 2025 — Buat olehmu. Host di GitHub Pages.
-    </footer>
-  </div>
 
-  <div class="accent-glow"></div>
+<footer>
+© 2025 — Buat olehmu. Host di GitHub Pages.
+</footer>
+</div>
 
-  <div class="lightbox" id="lightbox">
-    <button class="close-btn" id="closeLb">Close ✕</button>
-    <img src="" alt="preview" id="lbImg" />
-  </div>
 
-  <script>
-    document.querySelectorAll('.frame img').forEach(img=>{
-      img.addEventListener('click',()=>{
-        const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lbImg');
-        lbImg.src = img.src;
-        lb.classList.add('open');
-      })
-    })
-    document.getElementById('closeLb').addEventListener('click',()=>{
-      document.getElementById('lightbox').classList.remove('open');
-    })
+<div class="accent-glow"></div>
 
-    const DRIVE_FILE_ID = 'DRIVE_FILE_ID';
-    function driveToAudioUrl(id){
-      return `https://docs.google.com/uc?export=download&id=${id}`;
-    }
-    const playBtn = document.getElementById('playBtn');
-    let audio;
-    if(DRIVE_FILE_ID !== 'DRIVE_FILE_ID' && DRIVE_FILE_ID.trim() !== ''){
-      audio = new Audio(driveToAudioUrl(DRIVE_FILE_ID));
-      audio.preload = 'none';
-      audio.addEventListener('ended',()=>{playBtn.textContent = '▶';});
-    } else {
-      document.getElementById('songTitle').textContent = 'Ganti DRIVE_FILE_ID pada baris script dengan ID file Google Drive mu';
-    }
-    playBtn.addEventListener('click',()=>{
-      if(!audio){return alert('Belum ada ID Drive. Silakan ganti DRIVE_FILE_ID di script.');}
-      if(audio.paused){audio.play();playBtn.textContent='❚❚'}else{audio.pause();playBtn.textContent='▶'}
-    })
 
-    document.querySelectorAll('.frame img').forEach(img=>{
-      img.addEventListener('mouseover',()=>{
-        const t = img.getAttribute('data-title') || img.alt || '';
-        document.querySelector('.logo').textContent = '♥';
-        document.querySelector('.logo').title = t;
-      })
-      img.addEventListener('mouseout',()=>{
-        document.querySelector('.logo').textContent = 'J•D';
-        document.querySelector('.logo').title = '';
-      })
-    })
-  </script>
+<div class="lightbox" id="lightbox">
+<button class="close-btn" id="closeLb">Close ✕</button>
+<img src="" alt="preview" id="lbImg" />
+</div>
+
+
+<script>
+document.querySelectorAll('.frame img').forEach(img=>{
+img.addEventListener('click',()=>{
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+lbImg.src = img.src;
+lb.classList.add('open');
+})
+})
+document.getElementById('closeLb').addEventListener('click',()=>{
+document.getElementById('lightbox').classList.remove('open');
+})
+
+
+document.querySelectorAll('.frame img').forEach(img=>{
+img.addEventListener('mouseover',()=>{
+const t = img.getAttribute('data-title') || img.alt || '';
+document.querySelector('.logo').textContent = '♥';
+document.querySelector('.logo').title = t;
+})
+img.addEventListener('mouseout',()=>{
+document.querySelector('.logo').textContent = 'J•D';
+document.querySelector('.logo').title = '';
+})
+})
+</script>
 </body>
 </html>
